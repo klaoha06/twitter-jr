@@ -1,0 +1,11 @@
+<h3>Authentication failed!</h3>
+<br>
+<h3>Are you a new user?</h3>
+<h4>Please fill out this form to register!</h4>
+<form action='/users/new' method='POST'>
+    Username: <input type="text" name="User[username]"><br><br>
+    Password: <input type="text" name="User[password_hash]"><br><br>
+    <input type="submit" value="Sign up">
+</form>
+<h3>OR</h3>
+<a href="/">Back to Home</a>
