@@ -23,7 +23,9 @@
     </div>
 
     <div class="col-md-3 right_column">
-      <%= erb :_compose_tweet unless session[:user_id] == nil %>
+      <% @tweet_cloud = [] %>
+      <% Tweet.all.each { |tweet| tweet.hashtags.each {|hashtag| @tweet_cloud << hashtag.name } } %>
+      <%= erb :_tweet_cloud unless session[:user_id] == nil %>
     </div>
 
   </div>
