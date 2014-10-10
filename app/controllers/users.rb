@@ -35,3 +35,19 @@ get '/:username' do
   #   erb :sign_up
   # end
 end
+
+post '/follow/new' do
+  current_user = User.find(session[:user_id])
+  other_user = User.find(params[:user_id])
+  current_user.inverse_followers << other_user
+  current_user.save
+  redirect "/#{other_user.username}"
+end
+
+post '/unfollow/new' do
+  current_user = User.find(session[:user_id])
+  other_user = User.find(params[:user_id])
+  current_user.inverse_followers.delete(other_user)
+  current_user.save
+  redirect "/#{other_user.username}"
+end

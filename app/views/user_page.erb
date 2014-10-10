@@ -1,4 +1,10 @@
-<%= if @user.id == session[:user_id] then erb :_user end %>
+<% if @user.id == session[:user_id] %>
+	<%= erb :_user %>
+<% elsif User.find(session[:user_id]).inverse_followers.include?(User.find(@user.id)) %>
+	<%= erb :_unfollow_non_user %>
+<% else %>
+	<%= erb :_non_user  %>
+<% end %>
 <br>
 <br>
 <hr>
