@@ -204,9 +204,16 @@ box-shadow: -4px 3px 5px 0px rgba(194,194,194,1);
 }
 
 .user_tile {
-  border: 1px solid #ccc;
+  text-align: center;
   border-radius: 10px;
   margin:2%;
+}
+
+.user_tile a {
+  display: block;
+  background-color: #428bca;
+  border-radius: 10px;
+  color: white;
 }
 
 .follow-buttons {
@@ -215,7 +222,9 @@ box-shadow: -4px 3px 5px 0px rgba(194,194,194,1);
   margin-right: auto;
   margin-bottom: -5%;
 }
-
+.signup {
+margin-top: 10%;
+}
 body > div.row.twitter-content > div.col-md-3.col-sm-3.left_column > form > span {
   color: #ccc;
   z-index: 2;

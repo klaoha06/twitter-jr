@@ -37,7 +37,7 @@
       <%= erb :_tweet_cloud unless session[:user_id] == nil %>
     </div>
     <% else %>
-      <%= erb :index %>
+      <%= yield %>
     <% end %>
   </div>
 </body>

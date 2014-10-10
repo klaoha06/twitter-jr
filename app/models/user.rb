@@ -1,19 +1,19 @@
-# require 'bcrypt'
+require 'bcrypt'
 
 class User < ActiveRecord::Base
-  # include BCrypt
+  include BCrypt
   validates :username, uniqueness: true
   validates :username, presence: true
   validates :password_hash, presence: true
 
-    # def password
-    #   @password ||= Password.new(password_hash)
-    # end
+    def password
+      @password ||= Password.new(password_hash)
+    end
 
-    # def password=(new_password)
-    #   @password = Password.create(new_password)
-    #   self.password_hash = @password
-    # end
+    def password=(new_password)
+      @password = Password.create(new_password)
+      self.password_hash = @password
+    end
   has_many :tweets
   has_many :relationships
   has_many :followers, :through => :relationships
