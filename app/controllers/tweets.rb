@@ -16,3 +16,9 @@ get '/tweets/:id' do
     erb :display_single_tweet
   end
 end
+
+get '/tweets/:id/delete' do
+  tweet = Tweet.find(params[:id])
+  tweet.destroy
+  redirect back
+end

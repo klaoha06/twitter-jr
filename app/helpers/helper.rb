@@ -15,4 +15,8 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  # def display_delete
+  #   if @tweet.ud == session[:user_id]
+  # end
 end

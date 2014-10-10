@@ -26,6 +26,7 @@ get '/:username' do
   @user = User.find_by(username: params[:username])
   @tweets = @user.tweets
   @tweets = @tweets.sort_by(&:created_at).reverse
+  # @display_delete = @tweets.user.id == session[:user_id]
   erb :user_page
   # @user = User.find_by(username: params[:username])
   # if session[:user_id] == @user.id
