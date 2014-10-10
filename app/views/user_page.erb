@@ -1,3 +1,4 @@
+<%= erb :_followers_following %>
 <% if @user.id == session[:user_id] %>
 	<%= erb :_user %>
 <% elsif User.find(session[:user_id]).inverse_followers.include?(User.find(@user.id)) %>
