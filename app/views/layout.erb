@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="animate.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/application.css">
@@ -10,7 +11,9 @@
 <body>
 
   <div class="row">
+
     <div class="col-md-12"><%= erb :_header %></div>
+    <% if logged_in? %>
   </div>
 
   <div class="row twitter-content">
@@ -31,7 +34,9 @@
       <% Tweet.all.each { |tweet| tweet.hashtags.each {|hashtag| @tweet_cloud << hashtag.name } } %>
       <%= erb :_tweet_cloud unless session[:user_id] == nil %>
     </div>
-
+    <% else %>
+      <%= erb :index %>
+    <% end %>
   </div>
 </body>
 
