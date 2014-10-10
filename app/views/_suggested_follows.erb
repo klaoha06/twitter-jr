@@ -1,0 +1,7 @@
+<h1>Who to follow:</h1>
+<% suggested = current_user.clone.followers - current_user.clone.inverse_followers %>
+<% suggested.uniq.each do |person| %>
+  <div class="person">
+    <p><a href="/<%=person.username%>">@<%=person.username%></a></p>
+  </div>
+<% end %>

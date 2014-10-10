@@ -14,15 +14,19 @@
   </div>
 
   <div class="row twitter-content">
-    <div class="col-md-3 left_column">
-      <%= erb :_compose_tweet unless session[:user_id] == nil %>
+    <div class="col-md-3 col-sm-3 left_column">
+      <%= erb :_compose_tweet unless (session[:user_id] == nil || params[:username] == current_user.username) %>
+      <% if logged_in? %>
+        <%= erb :_suggested_follows if (params[:username] == current_user.username) %>
+        <%= erb :_popular_users if (params[:username] == current_user.username) %>
+      <% end %>
     </div>
 
-    <div class="col-md-6 middle_column">
+    <div class="col-md-6 col-sm-6 middle_column">
       <%= yield %>
     </div>
 
-    <div class="col-md-3 right_column">
+    <div class="col-md-3 col-sm-3 right_column">
       <% @tweet_cloud = [] %>
       <% Tweet.all.each { |tweet| tweet.hashtags.each {|hashtag| @tweet_cloud << hashtag.name } } %>
       <%= erb :_tweet_cloud unless session[:user_id] == nil %>

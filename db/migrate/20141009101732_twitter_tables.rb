@@ -21,5 +21,10 @@ class TwitterTables < ActiveRecord::Migration
       t.belongs_to :tweet
       t.belongs_to :retweet, :class_name => "Tweet"
     end
+
+    create_table :favoriteconversations do |t|
+      t.belongs_to :tweet
+      t.belongs_to :favorite, :class_name => "Tweet"
+    end
   end
 end
