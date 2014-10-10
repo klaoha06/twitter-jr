@@ -15,17 +15,34 @@ a:hover {
   margin-top: 5%;
 }
 
-.middle_column {
+.left_column {
+  margin: 0 2% 0 4%;
   padding: 2%;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.middle_column {
+  margin: 0 2%;
+  padding: 2%;
+  border: 1px solid #ccc;
   border-radius: 10px;
 }
 
 .tweet {
   padding: 1%;
-  border: 1px solid black;
+  border: 1px solid #ccc;
   border-radius: 5px;
   margin: 2%;
+}
+
+.tweet:hover {
+  border-color: #428bca;
+
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .tweet_bottom p a {
@@ -40,18 +57,47 @@ a:hover {
 }
 
 .tweet-submit {
-  background-image: -webkit-linear-gradient(top,#428bca 0,#428bca 100%);
   display: block;
-  margin-top: 20px;
-  border: none;
+  float: right;
+  margin-top: 2%;
+  margin-right: 2%;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: #428bca;
+  border: 1px solid #428bca;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .tweet-submit:hover {
   background-color: #428bca;
-  background-image: -webkit-linear-gradient(top,#428bca 0,#428bca 100%);
+  color: white;
+
+  -webkit-transition: background-color ease-out 0.4s;
+  -moz-transition: background-color ease-out 0.4s;
+  -o-transition: background-color ease-out 0.4s;
+  transition: background-color ease-out 0.4s;
 }
 
 .compose {
   width: 96%;
   margin: 0 auto;
+}
+
+.countdown {
+  color: #ccc;
+  z-index: 2;
+  display: block;
+  float: right;
+  margin-right: 3.5%;
+  margin-top: -3.5%;
+}
+.username {
+  margin-top: 0;
+}
+.reply {
+  display: block;
+  float: right;
+  margin-top: -3.5%;
+  z-index: 2;
 }

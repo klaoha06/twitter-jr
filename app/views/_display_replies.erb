@@ -1,6 +1,7 @@
 <% @replies.reverse.each do |reply| %>
 <div class="tweet">
-  <p> <a href="/<%= User.find(reply.user_id).username %>">@<%= User.find(reply.user_id).username %></a></p>
+  <h4 class="username"><a href="/<%= User.find(reply.user_id).username %>">@<%= User.find(reply.user_id).username %></a></h4>
+  <p class="reply"><a href="/<%= User.find(reply.user_id).username %>">@<%= User.find(reply.user_id).username %></a> replied to <a href="/<%= Tweet.find(reply.original_id).user.username %>">@<%= Tweet.find(reply.original_id).user.username %></a>'s <a href="/tweets/<%= reply.original_id %>">tweet</a>.</p>
 
   <% if reply.hashtags.length > 0 || reply.mentions.length > 0 %>
     <% @display_text = reply.text %>
@@ -16,7 +17,7 @@
   <% end %>
 
   <div class="tweet_bottom">
-    <p><%= @tweets.first.created_at.to_date %><a href="/tweets/<%= @tweets.first.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
+    <p><%= @tweets.first.created_at.to_date %><a href="/tweets/<%= @tweets.first.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a><% if reply.user_id == session[:user_id] %><a href="">Delete</a><% end %></p>
   </div>
 </div>
 <% end %>

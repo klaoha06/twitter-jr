@@ -1,3 +1,6 @@
 <%= if @user.id == session[:user_id] then erb :_user end %>
 <br>
+<br>
+<hr>
+<h3> <a href="/<%= @user.username %>">@<%= @user.username %></a>'s tweets</h3>
 <%= erb :_display_tweets %>
