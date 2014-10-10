@@ -22,8 +22,8 @@
       <%= yield %>
     </div>
 
-    <div class="col-md-3">
-
+    <div class="col-md-3 right_column">
+      <%= erb :_compose_tweet unless session[:user_id] == nil %>
     </div>
 
   </div>
