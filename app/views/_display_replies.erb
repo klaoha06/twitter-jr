@@ -1,0 +1,23 @@
+<% @replies.each do |reply| %>
+<div class="reply">
+  <p> <a href="/<%= User.find(reply.user_id).username %>">@<%= User.find(reply.user_id).username %></a></p>
+
+
+  <% if reply.hashtags.length > 0 || reply.mentions.length > 0 %>
+    <% @display_text = reply.text %>
+    <% reply.hashtags.each do |hashtag| %>
+      <% @display_text.gsub!(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+    <% end %>
+    <% reply.mentions.each do |mention| %>
+      <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+    <% end %>
+    <p><%= @display_text %></p>
+  <% else %>
+    <p> <%= reply.text %> </p>
+  <% end %>
+
+  <div class="tweet_bottom">
+    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= reply.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
+  </div>
+</div>
+<% end %>

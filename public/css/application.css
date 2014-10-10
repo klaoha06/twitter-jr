@@ -50,3 +50,8 @@ a:hover {
   background-color: #428bca;
   background-image: -webkit-linear-gradient(top,#428bca 0,#428bca 100%);
 }
+
+.compose {
+  width: 96%;
+  margin: 0 auto;
+}

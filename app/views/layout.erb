@@ -21,7 +21,6 @@
     <div class="col-md-6 middle_column">
       <%= User.find(session[:user_id]).username unless session[:user_id] == nil %>
       <%= yield %>
-      <%= erb :_footer %>
     </div>
 
     <div class="col-md-3">

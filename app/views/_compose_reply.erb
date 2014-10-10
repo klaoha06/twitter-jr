@@ -1,5 +1,7 @@
 <h3>Reply</h3>
 <form action="/tweets/reply" method="POST">
-  <textarea name="text" class="form-control compose" rows="3"><%= @participants %></textarea>
+  <input type="hidden" name="reply[tweet_id]" value="<%= @tweets.first.id %>" />
+  <input type="hidden" name="reply[user_id]" value="<%= session[:user_id] %>" />
+  <textarea name="reply[text]" class="form-control compose" rows="3"  maxlength="140">@<%= @participants %></textarea>
   <button type="submit" class="btn btn-success tweet-submit">Submit</button>
 </form>

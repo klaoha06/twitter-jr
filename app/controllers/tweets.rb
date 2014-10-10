@@ -5,7 +5,12 @@ end
 
 get '/tweets/:id' do
   @tweets = [] << Tweet.find(params[:id].to_i)
-  @participants = ""
+  @participants = "#{@tweets.first.user.username} "
   @tweets.first.mentions.each {|mention| @participants << "#{mention.name} " }
-  erb :display_single_tweet
+  if @tweets.first.replies.length > 0
+    @replies = @tweets.first.replies
+    erb :conversation
+  else
+    erb :display_single_tweet
+  end
 end
