@@ -2,15 +2,23 @@
 <% @tweets.each do |tweet| %>
 <div class="tweet">
   <p> <a href="/<%= User.find(tweet.user_id).username %>">@<%= User.find(tweet.user_id).username %></a></p>
-  <% tweet.hashtags.each do |hashtag| %>
-  <% @display_text = tweet.text.gsub(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+
+
+  <% if tweet.hashtags.length > 0 || tweet.mentions.length > 0 %>
+    <% @display_text = tweet.text %>
+    <% tweet.hashtags.each do |hashtag| %>
+      <% @display_text.gsub!(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+    <% end %>
+    <% tweet.mentions.each do |mention| %>
+      <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+    <% end %>
+    <p><%= @display_text %></p>
+  <% else %>
+    <p> <%= tweet.text %> </p>
   <% end %>
-  <% tweet.mentions.each do |mention| %>
-  <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
-  <p><%= @display_text %></p>
-  <% end %>
+
   <div class="tweet_bottom">
-    <p><%= tweet.created_at.to_date %><a href="">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
+    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= tweet.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
   </div>
 </div>
 <% end %>

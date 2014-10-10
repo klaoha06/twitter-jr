@@ -4,6 +4,7 @@ class Tweet < ActiveRecord::Base
   has_many :hashtags, :through => :hashtagtweets
   has_many :mentiontweets
   has_many :mentions, :through => :mentiontweets
+  has_many :replies
   validates_presence_of :text
   validates :text, length: { in: 1..140 }
 

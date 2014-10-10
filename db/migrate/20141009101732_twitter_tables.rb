@@ -10,5 +10,13 @@ class TwitterTables < ActiveRecord::Migration
       t.belongs_to :user
       t.timestamps
     end
+
+    create_table :replies do |t|
+      t.string :text
+      t.belongs_to :tweet
+      t.belongs_to :user
+      t.timestamps
+    end
+
   end
 end

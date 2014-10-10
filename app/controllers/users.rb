@@ -22,10 +22,6 @@ post '/users/new' do
   end
 end
 
-get '/newsfeed' do
-
-end
-
 get '/:username' do
   @user = User.find_by(username: params[:username])
   @tweets = @user.tweets

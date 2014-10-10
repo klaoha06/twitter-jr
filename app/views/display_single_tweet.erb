@@ -1,0 +1,10 @@
+<% @display_text = @participants.clone %>
+<% @tweets.first.mentions.each do |mention| %>
+  <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+  <%  %>
+<% end %>
+
+<h3>Conversation with <%= @display_text.gsub(/\s<a/, ', <a') %> </h3>
+<%= erb :_display_tweets %>
+<%= erb :_compose_reply %>
+
