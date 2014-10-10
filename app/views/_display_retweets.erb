@@ -1,0 +1,23 @@
+<% @retweets.reverse.each do |retweet| %>
+<div class="tweet">
+  <h4 class="username"><a href="/<%= User.find(retweet.user_id).username %>">@<%= User.find(retweet.user_id).username %></a></h4>
+  <p class="reply"><a href="/<%= User.find(retweet.user_id).username %>">@<%= User.find(retweet.user_id).username %></a> retweeted <a href="/<%= Tweet.find(retweet.original_id).user.username %>">@<%= Tweet.find(retweet.original_id).user.username %></a>'s <a href="/tweets/<%= retweet.original_id %>">tweet</a>.</p>
+
+  <% if retweet.hashtags.length > 0 || retweet.mentions.length > 0 %>
+    <% @display_text = retweet.text %>
+    <% retweet.hashtags.each do |hashtag| %>
+      <% @display_text.gsub!(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+    <% end %>
+    <% retweet.mentions.each do |mention| %>
+      <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+    <% end %>
+    <p><%= @display_text %></p>
+  <% else %>
+    <p> <%= retweet.text %> </p>
+  <% end %>
+
+  <div class="tweet_bottom">
+    <p><%= retweet.created_at.to_date %><a href="/tweets/<%= retweet.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a><% if retweet.user_id == session[:user_id] %><a href="/tweets/<%= retweet.id %>/delete">Delete</a><% end %></p>
+  </div>
+</div>
+<% end %>

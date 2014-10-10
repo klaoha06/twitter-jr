@@ -1,8 +1,10 @@
 <% @tweets.each do |tweet| %>
 <div class="tweet">
   <h4 class="username"><a href="/<%= User.find(tweet.user_id).username %>">@<%= User.find(tweet.user_id).username %></a></h4>
-  <% if tweet.original_id != nil %>
+  <% if tweet.inverse_replies.length > 0 %>
   <p class="reply"><a href="/<%= User.find(tweet.user_id).username %>">@<%= User.find(tweet.user_id).username %></a> replied to <a href="/<%= Tweet.find(tweet.original_id).user.username %>">@<%= Tweet.find(tweet.original_id).user.username %></a>'s <a href="/tweets/<%= tweet.original_id %>">tweet</a>.</p>
+  <% elsif tweet.inverse_retweets.length > 0 %>
+  <p class="reply"><a href="/<%= User.find(tweet.user_id).username %>">@<%= User.find(tweet.user_id).username %></a> retweeted <a href="/<%= Tweet.find(tweet.original_id).user.username %>">@<%= Tweet.find(tweet.original_id).user.username %></a>'s <a href="/tweets/<%= tweet.original_id %>">tweet</a>.</p>
   <% end %>
 
   <% if tweet.hashtags.length > 0 || tweet.mentions.length > 0 %>
@@ -19,7 +21,7 @@
   <% end %>
 
   <div class="tweet_bottom">
-    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= tweet.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a><% if tweet.user.id == session[:user_id] %><a href="/tweets/<%= tweet.id %>/delete">Delete</a><% end %></p>
+    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= tweet.id %>">Reply</a><a href="">Favorite</a><a href="/retweets/<%= tweet.id %>">Retweet</a><% if tweet.user.id == session[:user_id] %><a href="/tweets/<%= tweet.id %>/delete">Delete</a><% end %></p>
   </div>
 </div>
 <% end %>

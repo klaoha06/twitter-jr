@@ -15,6 +15,12 @@ class Tweet < ActiveRecord::Base
   has_many :inverse_conversations, :class_name => "Conversation", :foreign_key => "reply_id"
   has_many :inverse_replies, :through => :inverse_conversations, :source => :tweet
 
+  has_many :retweetconversations
+  has_many :retweets, :through => :retweetconversations
+  has_many :inverse_retweetconversations, :class_name => "Retweetconversation", :foreign_key => "retweet_id"
+  has_many :inverse_retweets, :through => :inverse_retweetconversations, :source => :tweet
+
+
   def generate_hashtags
     self.text.split(" ").select { |word| word[0] == '#'}
   end

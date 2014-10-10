@@ -16,5 +16,10 @@ class TwitterTables < ActiveRecord::Migration
       t.belongs_to :tweet
       t.belongs_to :reply, :class_name => "Tweet"
     end
+
+    create_table :retweetconversations do |t|
+      t.belongs_to :tweet
+      t.belongs_to :retweet, :class_name => "Tweet"
+    end
   end
 end
