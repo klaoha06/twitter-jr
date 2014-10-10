@@ -1,11 +1,12 @@
 require 'faker'
+require 'date'
 
 10.times do
   User.create!(:username => Faker::Internet.user_name, :password_hash => Faker::Internet.password)
 end
 
 50.times do
-  Tweet.create!(:text => Faker::Company.catch_phrase, :user_id => rand(1..10))
+  Tweet.create!(:text => Faker::Company.catch_phrase, :user_id => rand(1..10), :created_at => Date.today - rand(10))
 end
 
 30.times do

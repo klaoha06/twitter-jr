@@ -1,0 +1,4 @@
+<%= if @user.id == session[:user_id] then erb :_user end %>
+<br>
+<%= erb :_compose_tweet %>
+<%= erb :_display_tweets %>

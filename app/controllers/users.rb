@@ -4,7 +4,7 @@ post '/auth' do
     redirect '/users/sign_up'
   elsif user.password_hash == params[:password]
     session[:user_id] = user.id
-    redirect "/users/#{user.username}"
+    redirect "/#{user.username}"
   end
 end
 
@@ -22,18 +22,20 @@ post '/users/new' do
   end
 end
 
-get '/users/:username' do
-  @user = User.find_by(username: params[:username])
-  if session[:user_id] == @user.id
-    erb :user
-  else
-    erb :sign_up
-  end
+get '/newsfeed' do
+
 end
 
-get 'users/:id' do
-  p session
-  @user = User.find(user_id)
-  @url = @user.urls.find(params[:id])
-  erb :display_page
+get '/:username' do
+  @user = User.find_by(username: params[:username])
+  @tweets = @user.tweets
+  @tweets = @tweets.sort_by(&:created_at).reverse
+  erb :user_page
+  # @user = User.find_by(username: params[:username])
+  # if session[:user_id] == @user.id
+  #   @tweets = @user.tweets
+  #   erb :user
+  # else
+  #   erb :sign_up
+  # end
 end

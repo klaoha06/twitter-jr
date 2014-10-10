@@ -1,0 +1,14 @@
+<h2>Tweets</h2>
+<% @tweets.each do |tweet| %>
+<div class="tweet">
+  <p> <a href="/<%= User.find(tweet.user_id).username %>"><%= User.find(tweet.user_id).username %></a></p>
+  <% tweet.hashtags.each do |hashtag| %>
+  <% @display_text = tweet.text.gsub(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+  <% end %>
+  <% tweet.mentions.each do |mention| %>
+  <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/mentions/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+  <p><%= @display_text %></p>
+  <% end %>
+  <p><%= tweet.created_at.to_date %></p>
+</div>
+<% end %>
