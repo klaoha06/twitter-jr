@@ -21,7 +21,7 @@
         <button type="submit" class="btn btn-primary">Sign in</button>
       </form>
     <% else %>
-
+     <span class="glyphicon glyphicon-home" style="margin-top: 17px; font-size: 1.4em; color: #C0DEED;"></span>
       <a href="/logout"><button type="submit" class="btn btn-success logout">Log out @<%= User.find(session[:user_id]).username%></button></a>
     <% end %>
     </div><!--/.navbar-collapse -->
