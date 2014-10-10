@@ -23,7 +23,7 @@
   <% end %>
 
   <div class="tweet_bottom">
-    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= tweet.id %>">Reply</a><a href="/favorites/<%= tweet.id %>">Favorite</a><a href="/retweets/<%= tweet.id %>">Retweet</a><% if tweet.user.id == session[:user_id] %><a href="/tweets/<%= tweet.id %>/delete">Delete</a><% end %></p>
+    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= tweet.id %>">Reply</a><a href="/favorites/<%= tweet.id %>">Favorite</a><a href="/retweets/<%= tweet.id %>">Retweet (<%= tweet.retweets.count %>)</a><% if tweet.user.id == session[:user_id] %><a href="/tweets/<%= tweet.id %>/delete">Delete</a><% end %></p>
   </div>
 </div>
 <% end %>

@@ -22,6 +22,16 @@ post '/users/new' do
   end
 end
 
+get '/:username/followers' do
+@list = User.find_by(username: params[:username]).followers   #finding user with a username attribute equal to :username in URL, returns followers
+erb :follows
+end
+
+get '/:username/following' do
+@list = User.find_by(username: params[:username]).inverse_followers  #finding user with a username attribute equal to :username in URL, returns inverse_followers
+erb :follows
+end
+
 get '/:username' do
   @user = User.find_by(username: params[:username])
   @tweets = @user.tweets

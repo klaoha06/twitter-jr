@@ -58,8 +58,11 @@ body {
 }
 
 .left_column {
+  overflow: scroll;
+  overflow-x: hidden;
   position: fixed;
   width: 16.5%;
+  height: 70%;
   margin: 0 2% 0 4%;
   padding: 2%;
   border: 1px solid #ccc;
@@ -168,12 +171,43 @@ body {
 }
 
 .followers {
+  font-weight: 100;
   text-align: center;
   font-size: 2em;
-  padding-right: 10%;
+  margin-right: 10%;
+  padding: 1%;
+  border: 1px solid #428bca;
+  border-radius: 10px;
 }
 
 .following {
+  font-weight: 100;
   text-align: center;
   font-size: 2em;
+  padding: 1%;
+  border: 1px solid #428bca;
+  border-radius: 10px;
+}
+
+.following:hover, .followers:hover {
+  background-color: #428bca;
+  color: white;
+
+  -webkit-transition: background-color ease-out 0.4s;
+  -moz-transition: background-color ease-out 0.4s;
+  -o-transition: background-color ease-out 0.4s;
+  transition: background-color ease-out 0.4s;
+}
+
+.user_tile {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin:2%;
+}
+
+.follow-buttons {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -5%;
 }

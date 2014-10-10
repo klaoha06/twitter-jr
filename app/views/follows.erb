@@ -1,0 +1,6 @@
+<% @new_list = @list.clone.delete(current_user) %>
+<% @new_list.each do |person| %>
+	<div class="user_tile">
+		<a href="/<%= person.username %>">@<%= person.username %></a>
+	</div>
+<% end %>
