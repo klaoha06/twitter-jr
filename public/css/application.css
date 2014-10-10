@@ -177,3 +177,12 @@ body {
   text-align: center;
   font-size: 2em;
 }
+
+body > div.row.twitter-content > div.col-md-3.col-sm-3.left_column > form > span {
+  color: #ccc;
+  z-index: 2;
+  display: block;
+  float: right;
+  margin-right: 6.5%;
+  margin-top: -9.5%;
+}
