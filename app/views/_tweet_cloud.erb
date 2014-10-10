@@ -1,3 +1,3 @@
 <% @tweet_cloud.uniq.each do |hashtag|%>
-<p class="hashtag" style="font-size: <%= @tweet_cloud.select {|x| x == hashtag}.count %>em"><a href="/hashtags/<%= hashtag %>"><%= hashtag %></a></p>
+<a class="hashtag" style="font-size: <%= @tweet_cloud.select {|x| x == hashtag}.count %>em" href="/hashtags/<%= hashtag %>"><%= hashtag %></a>
 <% end %>

@@ -33,6 +33,7 @@ a:hover {
 
 .right_column {
   overflow: scroll;
+  overflow-x: hidden;
   position: fixed;
   margin-left: 80%;
   height: 500px;
@@ -118,5 +119,4 @@ a:hover {
 .hashtag {
   padding: 0;
   margin: 0;
-  display: block;
 }
