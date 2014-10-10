@@ -1,4 +1,4 @@
 <form action="/unfollow/new" method="POST">
 	<input type="hidden" name="user_id" value="<%= @user.id %>" />
-	<button type="submit" class="tweet-submit">Unfollow</button>
+	<button type="submit" class="tweet-submit follow-buttons">Unfollow @<%= @user.username %></button>
 </form>
