@@ -1,0 +1,9 @@
+<h1>Popular Users:</h1>
+<% popular = User.all.sort {|user1, user2| user1.followers.count <=> user2.followers.count} %>
+<% popular.reverse.each do |person| %>
+  <% if person.followers.count > 1%>
+  <div class="person">
+    <p><a href="/<%=person.username%>">@<%=person.username%></a>: <%=person.followers.count%> followers</p>
+  </div>
+  <% end %>
+<% end %>

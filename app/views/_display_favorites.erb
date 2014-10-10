@@ -1,0 +1,23 @@
+<% @favorites.reverse.each do |favorite| %>
+<div class="tweet">
+  <h4 class="username"><a href="/<%= User.find(favorite.user_id).username %>">@<%= User.find(favorite.user_id).username %></a></h4>
+  <p class="reply"><a href="/<%= User.find(favorite.user_id).username %>">@<%= User.find(favorite.user_id).username %></a> favoriteed <a href="/<%= Tweet.find(favorite.original_id).user.username %>">@<%= Tweet.find(favorite.original_id).user.username %></a>'s <a href="/tweets/<%= favorite.original_id %>">tweet</a>.</p>
+
+  <% if favorite.hashtags.length > 0 || favorite.mentions.length > 0 %>
+    <% @display_text = favorite.text %>
+    <% favorite.hashtags.each do |hashtag| %>
+      <% @display_text.gsub!(/#{hashtag.name}/, "<a href=\"/hashtags/#{hashtag.name[1..-1]}\">#{hashtag.name}</a>") %>
+    <% end %>
+    <% favorite.mentions.each do |mention| %>
+      <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
+    <% end %>
+    <p><%= @display_text %></p>
+  <% else %>
+    <p> <%= favorite.text %> </p>
+  <% end %>
+
+  <div class="tweet_bottom">
+    <p><%= favorite.created_at.to_date %><a href="/tweets/<%= favorite.id %>">Reply</a><a href="/retweets/<%= favorite.id %>">Retweet</a><a href="/favorites/<%= favorite.id %>">Favorite</a><% if favorite.user_id == session[:user_id] %><a href="/tweets/<%= favorite.id %>/delete">Delete</a><% end %></p>
+  </div>
+</div>
+<% end %>
