@@ -120,3 +120,18 @@ a:hover {
   padding: 0;
   margin: 0;
 }
+
+.top_of_page {
+  text-align: center;
+}
+
+.followers {
+  text-align: center;
+  font-size: 2em;
+  padding-right: 10%;
+}
+
+.following {
+  text-align: center;
+  font-size: 2em;
+}
