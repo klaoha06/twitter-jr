@@ -18,6 +18,8 @@
 
   <div class="row twitter-content">
     <div class="col-md-3 col-sm-3 left_column">
+      <h2>Hello, <a href="/<%= current_user.username %>">@<%= current_user.username %></a>.</h2>
+      <p><a href="/<%= current_user.username %>"><%= current_user.tweets.count %> tweets</a></p>
       <%= erb :_compose_tweet unless (session[:user_id] == nil || params[:username] == current_user.username) %>
       <% if logged_in? %>
         <%= erb :_suggested_follows if (params[:username] == current_user.username) %>
