@@ -1,3 +1,7 @@
+a:hover {
+  text-decoration: none;
+}
+
 .logout {
   float:right;
   margin-top: 7.5px;
@@ -22,4 +26,27 @@
   border: 1px solid black;
   border-radius: 5px;
   margin: 2%;
+}
+
+.tweet_bottom p a {
+  color: gray;
+  display: block;
+  float: right;
+  margin: 0 20px;
+}
+
+.tweet_bottom:hover a {
+  color: #428bca;
+}
+
+.tweet-submit {
+  background-image: -webkit-linear-gradient(top,#428bca 0,#428bca 100%);
+  display: block;
+  margin-top: 20px;
+  border: none;
+}
+
+.tweet-submit:hover {
+  background-color: #428bca;
+  background-image: -webkit-linear-gradient(top,#428bca 0,#428bca 100%);
 }
