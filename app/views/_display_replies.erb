@@ -1,7 +1,6 @@
-<% @replies.each do |reply| %>
-<div class="reply">
+<% @replies.reverse.each do |reply| %>
+<div class="tweet">
   <p> <a href="/<%= User.find(reply.user_id).username %>">@<%= User.find(reply.user_id).username %></a></p>
-
 
   <% if reply.hashtags.length > 0 || reply.mentions.length > 0 %>
     <% @display_text = reply.text %>
@@ -17,7 +16,7 @@
   <% end %>
 
   <div class="tweet_bottom">
-    <p><%= tweet.created_at.to_date %><a href="/tweets/<%= reply.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
+    <p><%= @tweets.first.created_at.to_date %><a href="/tweets/<%= @tweets.first.id %>">Reply</a><a href="">Favorite</a><a href="">Retweet</a></p>
   </div>
 </div>
 <% end %>

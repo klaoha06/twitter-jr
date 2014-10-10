@@ -4,9 +4,16 @@ class Tweet < ActiveRecord::Base
   has_many :hashtags, :through => :hashtagtweets
   has_many :mentiontweets
   has_many :mentions, :through => :mentiontweets
-  has_many :replies
   validates_presence_of :text
   validates :text, length: { in: 1..140 }
+
+  # has_many :replies, class_name: "Tweet", foreign_key: "tweet_id"
+  # belongs_to :original, class_name: "Tweet"
+
+  has_many :conversations
+  has_many :replies, :through => :conversations
+  has_many :inverse_conversations, :class_name => "Conversation", :foreign_key => "reply_id"
+  has_many :inverse_replies, :through => :inverse_conversations, :source => :tweet
 
   def generate_hashtags
     self.text.split(" ").select { |word| word[0] == '#'}

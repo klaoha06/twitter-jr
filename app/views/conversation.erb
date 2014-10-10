@@ -4,7 +4,13 @@
   <% @display_text.gsub!(/#{mention.name}/, "<a href=\"/#{mention.name[1..-1]}\">#{mention.name}</a>") %>
 <% end %>
 
-<h3>Conversation between <%= @display_text.gsub(/\s<a/, ', <a') %> </h3>
+<h3>Conversation with <%= @display_text.gsub(/\s<a/, ', <a') %> </h3>
 <%= erb :_display_tweets %>
+<% @original_id = @tweets.first.id %>
 <%= erb :_compose_reply %>
+<% @replies = @tweets.first.replies %>
+<br>
+<br>
+<hr>
+<h3>Replies</h3>
 <%= erb :_display_replies %>

@@ -1,4 +1,5 @@
 post '/tweets/reply' do
-  Reply.create(params[:reply])
-  redirect "/tweets/#{params[:reply][:tweet_id]}"
+  original = Tweet.find(params[:tweet][:id])
+  original.replies << Tweet.create(params[:reply])
+  redirect "/tweets/#{original.id}"
 end

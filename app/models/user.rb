@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :followers, :through => :relationships
   has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "follower_id"
   has_many :inverse_followers, :through => :inverse_relationships, :source => :user
-  has_many :replies
 
   def follow_self
     Relationship.create!(:user_id => self.id, :follower_id => self.id)

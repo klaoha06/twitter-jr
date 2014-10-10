@@ -8,16 +8,13 @@ class TwitterTables < ActiveRecord::Migration
     create_table :tweets do |t|
       t.string :text
       t.belongs_to :user
-      t.belongs_to :original_tweet, :class_name => "Tweet"
+      t.references :original
       t.timestamps
     end
 
-    create_table :replies do |t|
-      t.string :text
+    create_table :conversations do |t|
       t.belongs_to :tweet
-      t.belongs_to :user
-      t.timestamps
+      t.belongs_to :reply, :class_name => "Tweet"
     end
-
   end
 end
