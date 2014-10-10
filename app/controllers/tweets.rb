@@ -20,5 +20,5 @@ end
 get '/tweets/:id/delete' do
   tweet = Tweet.find(params[:id])
   tweet.destroy
-  redirect "/#{User.find(session[:user_id]).username}"
+  redirect back
 end
