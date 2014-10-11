@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="tweet_bottom">
-    <p><%= reply.created_at.to_date %><a href="/tweets/<%= reply.id %>">Reply</a><a href="/favorites/<%= reply.id %>">Favorite</a><a href="/retweets/<%= reply.id %>">Retweet</a><% if reply.user_id == session[:user_id] %><a href="/tweets/<%= reply.id %>/delete">Delete</a><% end %></p>
+    <p><%= reply.created_at.to_date %><a href="/tweets/<%= reply.id %>">Reply</a><a href="/favorites/<%= reply.id %>">Favorite</a><a href="/retweets/<%= reply.id %>">Retweet (<%= reply.retweets.length %>)</a><% if reply.user_id == session[:user_id] %><a href="/tweets/<%= reply.id %>/delete">Delete</a><% end %></p>
   </div>
 </div>
 <% end %>
