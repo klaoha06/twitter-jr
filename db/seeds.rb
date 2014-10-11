@@ -1,14 +1,14 @@
 require 'faker'
 require 'date'
 
-User.create!(:username => 'daniel', :password_hash => 'password')
-User.create!(:username => 'john', :password_hash => 'password')
+User.create!(:username => 'daniel', :password => 'password')
+User.create!(:username => 'john', :password => 'password')
 
 10.times do
-  User.create!(:username => Faker::Internet.user_name, :password_hash => Faker::Internet.password)
+  User.create!(:username => Faker::Internet.user_name, :password => Faker::Internet.password)
 end
 
-User.create!(:username => 'korn', :password_hash => 'password')
+User.create!(:username => 'korn', :password => 'password')
 
 30.times do
   @@length = User.all.length
