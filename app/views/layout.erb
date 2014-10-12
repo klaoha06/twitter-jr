@@ -2,49 +2,64 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="animate.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/application.css">
   <link rel="icon" type="image/png" href="favicon.png">
-  <title>Twitter JR</title>
+  <title>Twitter SR</title>
 </head>
 <body>
 
   <div class="row">
-
     <div class="col-md-12"><%= erb :_header %></div>
     <% if logged_in? %>
   </div>
+  <div id="twitter-background">
+    <div class="row twitter-content">
+      <div class="col-md-3 col-sm-3 left_column">
+        <div id="divider"></div>
+        <div id="user_widget">
+          <img style="margin-top:-65px; border:white solid 5px; border-radius: 10px; "src="/img/twitter64.png">
+          <h2 style="display: inline;"><%= current_user.username %></h2><br>
+          <p style="display: inline;"><a href="/<%= current_user.username %>">@<%= current_user.username %></a></p>
+          <br><br>
+          <div class="row">
+          <div class="col-md-4">
+              <p><a href="/<%= current_user.username %>">Tweets</a><br><span style="font-size:2em"><%= current_user.tweets.count %></span></p>
+            </div>
+            <div class="col-md-4">
+              <p><a href="/<%= current_user.username %>/followers">Followers</a><br><span style="font-size:2em"><%= current_user.followers.count %></span></p>
+            </div>
+            <div class="col-md-4">
+              <p><a href="/<%= current_user.username %>/following">Following</a><br><span style="font-size:2em"><%= current_user.inverse_followers.count %></span></p>
+            </div>
+          </div>
+          <%= erb :_compose_tweet unless (session[:user_id] == nil || params[:username] == current_user.username) %>
+          <% if logged_in? %>
+            <%= erb :_suggested_follows if (params[:username] == current_user.username) %>
+            <%= erb :_popular_users if (params[:username] == current_user.username) %>
+          <% end %>
+        </div>
+      </div>
 
-  <div class="row twitter-content">
-    <div class="col-md-3 col-sm-3 left_column">
-      <h2>Hello, <a href="/<%= current_user.username %>">@<%= current_user.username %></a>.</h2>
-      <p><a href="/<%= current_user.username %>"><%= current_user.tweets.count %> tweets</a></p>
-      <%= erb :_compose_tweet unless (session[:user_id] == nil || params[:username] == current_user.username) %>
-      <% if logged_in? %>
-        <%= erb :_suggested_follows if (params[:username] == current_user.username) %>
-        <%= erb :_popular_users if (params[:username] == current_user.username) %>
-      <% end %>
-    </div>
+      <div class="col-md-6 col-sm-6 middle_column">
+        <%= yield %>
+      </div>
 
-    <div class="col-md-6 col-sm-6 middle_column">
-      <%= yield %>
-    </div>
-
-    <div class="col-md-3 col-sm-3 right_column">
-      <% @tweet_cloud = [] %>
-      <% Tweet.all.each { |tweet| tweet.hashtags.each {|hashtag| @tweet_cloud << hashtag.name } } %>
-      <%= erb :_tweet_cloud unless session[:user_id] == nil %>
-    </div>
-    <% else %>
-      <%= yield %>
-    <% end %>
-  </div>
+      <div class="col-md-3 col-sm-3 right_column">
+        <% @tweet_cloud = [] %>
+        <% Tweet.all.each { |tweet| tweet.hashtags.each {|hashtag| @tweet_cloud << hashtag.name } } %>
+        <%= erb :_tweet_cloud unless session[:user_id] == nil %>
+      </div>
+    </div> <!-- twitter-content -->
+  </div> <!-- twitter-background -->
+  <% else %>
+  <%= yield %>
+  <% end %>
 </body>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script src="/js/application.js"></script>
 
 </html>

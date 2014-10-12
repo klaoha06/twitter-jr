@@ -2,7 +2,7 @@ post '/auth' do
   @user = User.find_by(username: params[:username])
   if @user.password == params[:password]
     session[:user_id] = @user.id
-    redirect '/#{@user.username}'
+    redirect "/#{@user.username}"
   else
     redirect '/users/sign_up'
   end
