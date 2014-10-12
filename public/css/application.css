@@ -9,6 +9,12 @@ h1, h2, h3, h4, h5 {
   color :#66757f;
 }
 
+/*#twitter-background {
+  background: url('https://abs.twimg.com/images/themes/theme1/bg.png');
+  background-repeat: no-repeat;
+  background-color: #C0DEED;
+}*/
+
 .navbar-header a {
   font-size: 1em;
   margin: 0 7px;
@@ -28,6 +34,7 @@ h1, h2, h3, h4, h5 {
   background-repeat: no-repeat;
   background-color: #C0DEED;
   padding-top: 60px;
+  min-height: 800px;
 }
 
 
