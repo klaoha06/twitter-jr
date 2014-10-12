@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5 {
   margin: 0 7px;
 }
 
+.icons {
+  font-size: 1.1em; 
+}
+
 .icons a:hover {
  border-bottom: 5px solid #0084b4;
  transition: all .15s ease-in-out;

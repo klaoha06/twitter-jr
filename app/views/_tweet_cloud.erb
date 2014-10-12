@@ -1,6 +1,5 @@
 <h3 style = "text-align: center;">Tweets Cloud</h3>
 <hr>
-<br>
 <% @tweet_cloud.uniq.each do |hashtag|%>
 <a class="hashtag" style="font-size: <%= (@tweet_cloud.select {|x| x == hashtag}.count)/2 %>em" href="/hashtags/<%= hashtag[1..-1] %>"><%= hashtag %></a>
 <% end %>
