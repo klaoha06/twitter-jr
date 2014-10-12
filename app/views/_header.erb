@@ -1,16 +1,16 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header twitter">
       <% if logged_in? %>
-        <div class="icons">
-        <a class="navbar-brand" href="/"><i class="fa fa-home" style="font-size: 1.2em; margin-top:-3px;"></i> Home</a>
-        <a class="navbar-brand" href="/"><i class="fa fa-bell" style="font-size: 1.1em; margin-top:-3px;"></i> Notifications</a>
-        <a class="navbar-brand" href="/"><i class="fa fa-envelope" style="font-size: 1.1em; margin-top:-3px;"></i> Messages</a>
-        <a class="navbar-brand" href="/"><i class="fa fa-group" style="font-size: 1.1em; margin-top:-3px;"></i> Discover</a>
-        <p class="fa fa-twitter" style="position:fixed; font-size: 1.8em; color:#55ACEE; right:50%; top:13px;"></p>
-        </div>
+      <div class="icons">
+        <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Home</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-bell"></i> Notifications</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-envelope"></i> Messages</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-group"></i> Discover</a>
+        <p class="fa fa-twitter" style="position:fixed; font-size: 1.9em; color:#55ACEE; right:50%; top:13px;"></p>
+      </div>
       <% else %>
-        <a href="/"><i class="fa fa-twitter" style="font-size: 1.8em; color:#00ACED; padding-top:13px;"></i></a>
+      <a href="/"><i class="fa fa-twitter" style="font-size: 1.9em; color:#00ACED; padding-top:13px;"></i></a>
       <% end %>
     </div>
     <div class="navbar-collapse collapse">
@@ -26,7 +26,12 @@
       </form>
       <% else %>
       <a href="/logout"><button type="submit" class="btn btn-success logout">Log out @<%= User.find(session[:user_id]).username%></button></a>
+      <form class="navbar-form navbar-right" role="search" style="margin-right: 1px;">
+        <div class="form-group">
+          <input style="border-radius: 20px; background-color:#f5f8fa;" type="text" class="form-control" placeholder="Search Twitter">
+        </div>
+      </form>
       <% end %>
     </div><!--/.navbar-collapse -->
   </div>
-</div>
+</nav>
