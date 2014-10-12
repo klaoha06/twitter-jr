@@ -9,12 +9,6 @@ h1, h2, h3, h4, h5 {
   color :#66757f;
 }
 
-/*#twitter-background {
-  background: url('https://abs.twimg.com/images/themes/theme1/bg.png');
-  background-repeat: no-repeat;
-  background-color: #C0DEED;
-}*/
-
 .navbar-header a {
   font-size: 1em;
   margin: 0 7px;
@@ -57,8 +51,9 @@ h1, h2, h3, h4, h5 {
 }
 
 #splash {
+  width: 102%;
   height: 800px;
-  background: url('/img/splash.jpg');
+  background: url('/img/splash1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -75,6 +70,29 @@ h1, h2, h3, h4, h5 {
 
 #splash h2 {
   text-align: center;
+}
+
+footer {
+  margin-top: 23%;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  margin: 5px 5px;
+  text-shadow: none;
+}
+
+footer a:hover {
+  color: white;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+
+}
+
+footer p {
+  font-size: 0.8em;
+  color: white;
+  margin: 25px 5px 0 5px;
 }
 
 .logout {
