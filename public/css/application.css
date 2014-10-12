@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5 {
 
 #splash {
   height: 800px;
-  background: url('/img/1.jpeg');
+  background: url('/img/splash.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
