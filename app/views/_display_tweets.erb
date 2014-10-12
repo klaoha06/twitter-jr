@@ -1,3 +1,4 @@
+<h3>Tweets</h3>
 <% @tweets.each do |tweet| %>
 <div class="tweet">
   <h4 class="username"><a href="/<%= User.find(tweet.user_id).username %>">@<%= User.find(tweet.user_id).username %></a></h4>

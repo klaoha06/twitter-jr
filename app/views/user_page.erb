@@ -1,13 +1,13 @@
-<%= erb :_followers_following %>
-<% if @user.id == session[:user_id] %>
+	<%= erb :_followers_following if request.path_info != "/#{current_user.username}" %>
+	<% if @user.id == session[:user_id] %>
 	<%= erb :_user %>
-<% elsif User.find(session[:user_id]).inverse_followers.include?(User.find(@user.id)) %>
+	<% elsif User.find(session[:user_id]).inverse_followers.include?(User.find(@user.id)) %>
 	<%= erb :_unfollow_non_user %>
-<% else %>
+	<% else %>
 	<%= erb :_non_user  %>
-<% end %>
-<br>
-<br>
-<hr>
-<h3> <a href="/<%= @user.username %>">@<%= @user.username %></a>'s tweets</h3>
-<%= erb :_display_tweets %>
+	<% end %>
+	<br>
+	<br>
+	<hr>
+	<h3> <a href="/<%= @user.username %>">@<%= @user.username %></a>'s tweets</h3>
+	<%= erb :_display_tweets %>
